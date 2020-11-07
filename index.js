@@ -13,8 +13,8 @@ The function should:
   2. Create and return an object using the received values  
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(name, price, category){
+  return {name, price, category};
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -26,7 +26,12 @@ Test your createMenuItems function by doing the following:
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
 
-
+let a = createMenuItem('Turkey Sammich', 4, 'Lunch');
+console.log(a);
+let b = createMenuItem('Cobb Salad', 5, 'Dinner');
+console.log(a);
+let c = createMenuItem('Rob Roy', 6, 'Drink');
+console.log(a);
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to the 
@@ -45,7 +50,11 @@ export const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  /*Your code here*/
+  discount: function(str) {
+    if (str==="teacher"||str==="student") {
+      return this.price - (this.price * .25);
+    } else return this.price - (this.price * .1);
+  }
 }
 
 
@@ -67,6 +76,7 @@ Using the reviews array above:
   1. log only Julius' feedback to the console
 */
 
+console.log(reviews[5].feedback);
 
 
 
@@ -76,7 +86,12 @@ Using the reviews array above do the following:
   2. log the whole array to the console, make sure the new review is inside of it   
 */
 
+function arrUpdate(array, name, rating, feedback) {
+  array.push({name , rating , feedback});
+  return array;
+}
 
+console.log(arrUpdate(reviews, 'Kirk', 4.5, 'It smelled of Elderberries. Delightful.'));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Reyna's feedback is missing! Use what you know to do the following:
@@ -84,9 +99,11 @@ Reyna's feedback is missing! Use what you know to do the following:
   2. log the reviews array to the console to check your work
 */
 
-
-
-
+function feedUpdate(arr, i, str) {
+  arr[i].feedback = str;
+  return arr;
+}
+console.log(feedUpdate(reviews, 7 , 'It smelled of huckleberry. Horrible.'));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function to return a review based on the index of the review in the array.
@@ -98,12 +115,13 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(arr, i) {
+  let feed = arr[i].feedback;
+  let star = arr[i].rating;
+  let name = arr[i].name;
+  return `${name} gave the restaurant a ${star} star review, and their feedback was: ${feed}`;
 }
 
-
-  
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Write a function to get information about the most recent (last) review called `getLastReview`
@@ -116,9 +134,15 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
-} 
+function getLastReview(arr) {
+  let i = arr.length-1;
+  let feed = arr[i].feedback;
+  let star = arr[i].rating;
+  let name = arr[i].name;
+  return `${name} gave the restaurant a ${star} star review, and their feedback was: ${feed}`;
+}
+
+console.log(getLastReview(reviews));
 
 
 
